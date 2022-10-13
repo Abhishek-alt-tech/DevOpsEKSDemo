@@ -12,7 +12,7 @@ pipeline {
             NEXUS_CREDENTIAL_ID = "nexus"
     } 
     stages {
-        stage('Cloning Git') {
+        stage('checkout code') {
             steps {
                     checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/AbdulShukur007/myeksapp.git']]])
             }
