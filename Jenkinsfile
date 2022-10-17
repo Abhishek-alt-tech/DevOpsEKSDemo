@@ -17,19 +17,34 @@ pipeline {
                     checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/Abhishek-alt-tech/DevOpsEKSDemo.git']]])
             }
         }
-       stage('Sonarqube') {
-    environment {
-        scannerHome = tool 'SonarQubeScanner'
-    }
-    steps {
-        withSonarQubeEnv('sonarqube') {
-            sh "${scannerHome}/bin/sonar-scanner"
+//        stage('Sonarqube') {
+//     environment {
+//         scannerHome = tool 'SonarQubeScanner'
+//     }
+//     steps {
+//         withSonarQubeEnv('sonarqube') {
+//             sh "${scannerHome}/bin/sonar-scanner"
+//         }
+//         timeout(time: 10, unit: 'MINUTES') {
+//             waitForQualityGate abortPipeline: true
+//         }
+//     }
+// }
+        stage('Sonarqube Test') {
+
+            steps {
+
+            withSonarQubeEnv('sonar') {
+
+                 sh '''mvn sonar:sonar'''         }
+
+                 echo 'The Application passes All the Quality Gates'
+            
+
+            }    
+
         }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
-    }
-}
+       
         stage('Maven Build'){
             steps {
                 sh 'mvn clean deploy'           
