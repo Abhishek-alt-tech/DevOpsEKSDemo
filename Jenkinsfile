@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('checkout code') {
             steps {
-                    checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/AbdulShukur007/myeksapp.git']]])
+                    checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/Abhishek-alt-tech/DevOpsEKSDemo.git']]])
             }
         }  
         stage('Maven Build'){
