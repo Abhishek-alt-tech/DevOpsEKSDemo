@@ -41,7 +41,6 @@ pipeline {
     steps {
         withSonarQubeEnv('sonar') {
             sh "${scannerHome}/bin/sonar-scanner"
-           sh '''mvn sonar:sonar'''
             
         }
 //         timeout(time: 2, unit: 'MINUTES') {
