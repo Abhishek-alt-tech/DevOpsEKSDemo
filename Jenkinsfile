@@ -34,33 +34,33 @@ pipeline {
 
 //   }    
    
-    stage('Sonarqube') {
-    environment {
-        scannerHome = tool 'sonar'
-    }
-    steps {
-        withSonarQubeEnv('sonar') {
-            sh "${scannerHome}/bin/sonar-scanner"
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
-    }
-}
-//         stage('SonarQube') {
+//     stage('Sonarqube') {
+//     environment {
+//         scannerHome = tool 'sonar'
+//     }
+//     steps {
+//         withSonarQubeEnv('sonar') {
+//             sh "${scannerHome}/bin/sonar-scanner"
+//         }
+//         timeout(time: 10, unit: 'MINUTES') {
+//             waitForQualityGate abortPipeline: true
+//         }
+//     }
+// }
+        stage('SonarQube') {
 
-//             steps {
+            steps {
 
-//             withSonarQubeEnv('sonar') {
+            withSonarQubeEnv('sonar') {
 
-//                  sh '''mvn sonar:sonar'''         }
+                 sh '''mvn sonar:sonar'''         }
 
-//                  echo 'quality gate successfully passed'
+                 echo 'quality gate successfully passed'
             
 
-//             }    
+            }    
 
-//         }
+        }
        
         stage('Maven Build'){
             steps {
