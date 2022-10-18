@@ -18,35 +18,35 @@ pipeline {
             }
         }
        
-   stage ('SonarQube Scann'){
-   steps {
-       script 
-       {
+//    stage ('SonarQube Scann'){
+//    steps {
+//        script 
+//        {
            
-            withSonarQubeEnv ('sonar'){
-               sh '''mvn sonar:sonar'''
-               sh '''/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar/bin/sonar-scanner -Dsonar.projectKey=develop -Dsonar.sources=. '''
+//             withSonarQubeEnv ('sonar'){
+//                sh '''mvn sonar:sonar'''
+//                sh '''/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar/bin/sonar-scanner -Dsonar.projectKey=develop -Dsonar.sources=. '''
                
               
-            }
-            }
-        }
+//             }
+//             }
+//         }
 
-  }    
+//   }    
    
-//     stage('Sonarqube') {
-//     environment {
-//         scannerHome = tool 'sonar'
-//     }
-//     steps {
-//         withSonarQubeEnv('sonar') {
-//             sh "${scannerHome}/bin/sonar-scanner"
-//         }
-//         timeout(time: 10, unit: 'MINUTES') {
-//             waitForQualityGate abortPipeline: true
-//         }
-//     }
-// }
+    stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'sonar'
+    }
+    steps {
+        withSonarQubeEnv('sonar') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+    }
+}
 //         stage('SonarQube') {
 
 //             steps {
