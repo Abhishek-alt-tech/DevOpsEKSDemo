@@ -18,7 +18,11 @@ pipeline {
             }
         }
        
-
+  stage('Maven Build'){
+            steps {
+                sh 'mvn clean deploy'           
+            }
+        }
        stage('SonarQube analysis'){
 
               steps{
@@ -90,11 +94,7 @@ pipeline {
 
 //         }
        
-        stage('Maven Build'){
-            steps {
-                sh 'mvn clean deploy'           
-            }
-        }
+        
         stage('Push to Nexus'){
            steps {
                 script {
