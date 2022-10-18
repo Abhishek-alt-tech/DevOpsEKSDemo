@@ -16,8 +16,7 @@
         <version>1.4.2.RELEASE</version>
         <relativePath/> 
     </parent>
-   
-  <distributionManagement>
+    <distributionManagement>
   <repository>
     <id>nexus</id>
     <!-- CHANGE HERE by your team nexus server -->
@@ -60,10 +59,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-		
-	   
-	
-         </plugins>
+        </plugins>
 	<finalName>springbootApp</finalName>
     </build>
 	
