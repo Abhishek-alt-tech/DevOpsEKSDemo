@@ -41,10 +41,7 @@ pipeline {
     steps {
         withSonarQubeEnv('sonar') {
             sh "${scannerHome}/bin/sonar-scanner"
-           mvn sonar:sonar
-  -Dsonar.projectKey=develop
-  -Dsonar.host.url=http://46.137.60.154:9000
-  -Dsonar.login=a20c4abb6f8f7c253e46c1f6d8eb72b975971620
+           sh '''mvn sonar:sonar'''
             
         }
 //         timeout(time: 2, unit: 'MINUTES') {
