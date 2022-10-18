@@ -106,13 +106,13 @@ pipeline {
         }
       stage('Ansible Deploy'){
           steps {    
-                   echo "start connection"
-                    sh 'ssh -i IRELAND_KEYPAIR.pem ec2-user@52.51.11.153'
-                  echo "connection success"
-                    sh '''sudo su && cd /etc/ansible && sudo ansible-playbook -i /etc/ansible/myhost /etc/ansible/myplaybook/myplaybook.yml'''  
-                  
-                   
-                   // sh 'sudo ansible-playbook -i myhosts ansible.yml'
+                //    echo "start connection"
+                //    sh 'ssh -i IRELAND_KEYPAIR.pem ec2-user@52.51.11.153'
+                //    echo "connection success"
+                //    sh '''sudo su && cd /etc/ansible && sudo ansible-playbook -i /etc/ansible/myhost /etc/ansible/myplaybook/myplaybook.yml'''                     // sh 'sudo ansible-playbook -i myhosts ansible.yml'
+                ansiblePlaybook credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'myplaybook.yml'
+               echo 'Tomcat Deployment is done'
+         
           } 
        }
     }
