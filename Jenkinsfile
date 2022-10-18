@@ -18,6 +18,32 @@ pipeline {
             }
         }
        
+
+       stage('SonarQube analysis'){
+
+              steps{
+
+                     script{
+
+                         withSonarQubeEnv('sonar') {
+
+                         sh "mvn sonar:sonar"
+
+                              }
+
+                         timeout(time: 2, unit: 'MINUTES') {
+
+                              waitForQualityGate abortPipeline: true
+
+                              }
+
+                         
+
+                      }
+
+               }
+
+        }
 //    stage ('SonarQube Scann'){
 //    steps {
 //        script 
@@ -34,21 +60,21 @@ pipeline {
 
 //   }    
    
-    stage('Sonarqube') {
-    environment {
-        scannerHome = tool 'sonar'
-    }
-    steps {
-        withSonarQubeEnv('sonar') {
-            sh "${scannerHome}/bin/sonar-scanner"
+    // stage('Sonarqube') {
+    // environment {
+    //     scannerHome = tool 'sonar'
+    // }
+    // steps {
+    //     withSonarQubeEnv('sonar') {
+    //         sh "${scannerHome}/bin/sonar-scanner"
            // sh 'mvn sonar:sonar'
         
-        }
+//        }
 //        timeout(time: 2, unit: 'MINUTES') {
 //             waitForQualityGate abortPipeline: true
 //     }
-    }
-    }
+//    }
+//    }
 //         stage('SonarQube') {
 
 //             steps {
@@ -106,7 +132,7 @@ pipeline {
         }
       stage('Ansible Deploy'){
           steps {    
-                //    echo "start connection"
+              echo "start connection"
                 //    sh 'ssh -i IRELAND_KEYPAIR.pem ec2-user@52.51.11.153'
                 //    echo "connection success"
                 //    sh '''sudo su && cd /etc/ansible && sudo ansible-playbook -i /etc/ansible/myhost /etc/ansible/myplaybook/myplaybook.yml'''                     // sh 'sudo ansible-playbook -i myhosts ansible.yml'
