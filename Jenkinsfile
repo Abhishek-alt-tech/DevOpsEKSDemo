@@ -24,7 +24,7 @@ pipeline {
        {
            
             withSonarQubeEnv ('Jenkins-sonar-server'){
-              sh "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar/bin/sonar-scanner -Dsonar.projectKey=develop -Dsonar.sources=. "
+              sh '''/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar/bin/sonar-scanner -Dsonar.projectKey=develop -Dsonar.sources=. '''
             }
             }
         }
