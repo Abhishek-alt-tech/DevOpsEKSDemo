@@ -106,8 +106,11 @@ pipeline {
         }
       stage('Ansible Deploy'){
           steps {    
+                    sh 'ssh -i IRELAND_KEYPAIR.pem ec2-user@52.51.11.153'
+                    sh '''cd /etc/ansible && sudo ansible-playbook -i /etc/ansible/myhost /etc/ansible/myplaybook/myplaybook.yml'''  
+         
                    
-                    sh 'sudo ansible-playbook -i myhosts ansible.yml'
+                   // sh 'sudo ansible-playbook -i myhosts ansible.yml'
           } 
        }
     }
