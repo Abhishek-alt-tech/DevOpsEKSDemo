@@ -1,8 +1,8 @@
 ---
 - hosts: all
   become: yes
-  vars:
-       ArtifactVersion : 0.0.2
+  # vars:
+  #      ArtifactVersion : 0.0.2
   tasks:
    - name: Download a WAR File to the Tomcat webapps directory to be deployed
      maven_artifact:
@@ -10,7 +10,7 @@
        artifact_id: springbootApp
        extension: war
        repository_url: 'http://3.250.92.241:8081/repository/maven-releases/'
-       version: "{{ ArtifactVersion }}"
+       #version: "{{ ArtifactVersion }}"
        username: admin
        password: admin
        dest: /opt/apache-tomcat-9.0.68/webapps/
