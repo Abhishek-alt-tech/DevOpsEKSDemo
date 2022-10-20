@@ -88,8 +88,8 @@ pipeline {
           steps {   
 
             script {
-                      
-                      sh """ ansible-playbook -i hosts ansible.yml """
+                     
+                sh """ ansible-playbook -i /etc/ansible/hosts ansible.yml """
              }    
                     
           } 
