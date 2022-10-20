@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   vars:
-       ArtifactVersion : 0.1.1
+       ArtifactVersion : 0.0.2
   tasks:
    - name: Download a WAR File to the Tomcat webapps directory to be deployed
      maven_artifact:
