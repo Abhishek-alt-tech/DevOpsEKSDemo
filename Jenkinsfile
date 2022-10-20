@@ -89,7 +89,7 @@ pipeline {
 
             script {
                       
-                      sh """ sudo ansible-playbook -i myhosts ansible.yml """
+                      sh """ ansible-playbook -i myhosts ansible.yml """
              }    
                     
           } 
