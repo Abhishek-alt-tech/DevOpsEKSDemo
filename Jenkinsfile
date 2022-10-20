@@ -85,16 +85,13 @@ pipeline {
            }  
         }
       stage('Ansible Deploy'){
-          steps {    
-              echo "start connection"
-              sh "pwd"
-              sh 'ssh -tt -i IRELAND_KEYPAIR.pem root@ip-172-31-41-148.eu-west-1.compute.internal'
-              sh 'whoami && ip r'
-                //    echo "connection success"
-                //    sh '''sudo su && cd /etc/ansible && sudo ansible-playbook -i /etc/ansible/myhost /etc/ansible/myplaybook/myplaybook.yml'''                     // sh 'sudo ansible-playbook -i myhosts ansible.yml'
-               // ansiblePlaybook credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'myplaybook.yml'
-               //echo 'Tomcat Deployment is done'
-         
+          steps {   
+
+            script {
+                      
+                      sh """ sudo ansible-playbook -i myhosts ansible.yml """
+             }    
+                    
           } 
        }
     }
