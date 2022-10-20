@@ -88,7 +88,7 @@ pipeline {
           steps {    
               echo "start connection"
               sh "pwd"
-              sh 'ssh -i IRELAND_KEYPAIR.pem root@ip-172-31-41-148.eu-west-1.compute.internal'
+              sh 'ssh -tt -i IRELAND_KEYPAIR.pem root@ip-172-31-41-148.eu-west-1.compute.internal'
               sh 'whoami && ip r'
                 //    echo "connection success"
                 //    sh '''sudo su && cd /etc/ansible && sudo ansible-playbook -i /etc/ansible/myhost /etc/ansible/myplaybook/myplaybook.yml'''                     // sh 'sudo ansible-playbook -i myhosts ansible.yml'
